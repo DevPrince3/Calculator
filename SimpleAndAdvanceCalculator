@@ -1,0 +1,99 @@
+package Calculator;                   //Main program
+class SimpleCalculator{
+    SimpleCalculator(){
+
+    }
+    int add(int num1,int num2){
+        return num1+num2;
+    }
+    int sub(int num1,int num2){
+        return num1-num2;
+    }
+    float product(int num1,int num2){
+        return (float)num1*num2;
+    }
+}
+
+public class Calc {
+    public static void main() {
+//        SimpleCalculator obj=new SimpleCalculator();
+//        System.out.println(obj.add(2,3));
+        AdvCalc obj1=new AdvCalc();
+        //obj1.matrix();
+        //obj1.linear();
+
+
+class AdvCalc extends SimpleCalculator {                   //Extended program from simple calculator in same package
+    static Scanner sc=new Scanner(System.in);
+    //Matrix Multiplication
+     void matrix() {
+        System.out.println("Enter row of first matrix");
+        int r1 = sc.nextInt();
+        System.out.println("Enter column of first matrix");
+        int c1 = sc.nextInt();
+        System.out.println("Enter row of second matrix");
+        int r2 = sc.nextInt();
+        System.out.println("Enter column of second matrix");
+        int c2 = sc.nextInt();
+        if (c1 != c2)
+            System.out.println("Column of first matrix " + c1 + " must not be equal to row of second matrix " + r1);
+        int[][] a = new int[r1][c1];
+        int[][] b = new int[r2][c2];
+        int[][] c = new int[r1][c2];
+        System.out.println("Enter element of first matrix a");
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c1; j++) {
+                a[i][j] = sc.nextInt();
+            }
+
+        }
+        System.out.println("Enter element of second matrix b");
+        for (int i = 0; i < r2; i++) {
+            for (int j = 0; j < c2; j++) {
+                b[i][j] = sc.nextInt();
+            }
+
+        }
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c2; j++) {
+                for (int k = 0; k < c1; k++) {
+                    c[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+            System.out.println("RESULT");
+            for (int i = 0; i < r1; i++) {
+                for (int j = 0; j < c2; j++) {
+                    System.out.print(c[i][j]+"\t");
+                }
+                System.out.println();
+            }
+    }
+    // sin, cos, tan of an angle given in degrees
+    void trig() {
+        System.out.print("Enter angle in degrees: ");
+        double rad = Math.toRadians(sc.nextDouble());
+        System.out.printf("sin = %.4f%n", Math.sin(rad));
+        System.out.printf("cos = %.4f%n", Math.cos(rad));
+        System.out.printf("tan = %.4f%n", Math.tan(rad));
+    }
+    void linear(){
+        System.out.println("enter a1 b1 c1 data");
+        double a1=sc.nextDouble();
+        double b1=sc.nextDouble();
+        double c1=sc.nextDouble();
+        System.out.println("enter a2 b2 c2 data");
+        double a2=sc.nextDouble();
+        double b2=sc.nextDouble();
+        double c2=sc.nextDouble();
+        double d=a1*b2-b1*a2;
+        if(d==0) System.out.println("No unique solution");
+        System.out.println("x = " + (c1 * b2 - c2 * b1) / d);
+        System.out.println("y = " + (a1 * c2 - a2 * c1) / d);
+    }
+}
+
+        obj1.trig();
+    }
+}
+
